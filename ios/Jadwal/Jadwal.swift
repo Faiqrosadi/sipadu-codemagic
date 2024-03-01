@@ -144,12 +144,12 @@ struct CryptoWidgetEntryView : View {
                     }
                     //MARK: Swift Charts
                     Chart{
-                        let graphColor = cryto.princeChange < 0 ? Color.red : Color("Green")
+                        let graphColor = crypto.priceChange < 0 ? Color.red : Color("Green")
                         ForEach(crypto.last7Days.price.indices,id: \.self){
-                            index in LineMark(x: .value("Hour", index), y: .value("Price", crypto.last7Days.prie[index] - min()))
+                            index in LineMark(x: .value("Hour", index), y: .value("Price", crypto.last7Days.price[index] - min()))
                                                 .foregroundStyle(graphColor)
-                            AreaMark(x: .value("Hour", index), y: .value("Price", crypto.last7Days.prie[index] - min()))
-                                .foregroundStyle(.LinearGradient(colors: [graphColor.opacity(0.2), graphColor.opacity(0.2),.clear], startPoint: .top, endPoint: .bottom ))
+                            AreaMark(x: .value("Hour", index), y: .value("Price", crypto.last7Days.price[index] - min()))
+                                .foregroundStyle(.linearGradient(colors: [graphColor.opacity(0.2), graphColor.opacity(0.2),.clear], startPoint: .top, endPoint: .bottom ))
                         }
                     }
                     .chartXAxis(.hidden)
